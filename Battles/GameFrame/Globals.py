@@ -18,6 +18,12 @@ class Globals:
     # - Set the order of the rooms - #
     levels = ["Arena", "EndScreen"]
 
+    red_player = ''
+
+    blue_player = ''
+
+    background_music = 0
+
     # - Winner Text - #
     winner = ' '
 

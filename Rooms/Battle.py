@@ -8,12 +8,42 @@ class Battle(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
 
-        title = TextObject(self, 200, 200, 'Battle', 70, 'Comic Sans MS', (255, 255, 255))
-        self.add_room_object(title)
+        self.background_sound = self.load_sound('dramatic_event.ogg')
+        self.background_sound.play()
+
+        red_team = TextObject(self,
+                              200,
+                              200,
+                              'Red : {}'.format(Globals.game_list[Globals.current_battle][0]),
+                              70,
+                              'Comic Sans MS',
+                              (255, 0, 0)
+                              )
+        self.add_room_object(red_team)
+
+        versus = TextObject(self,
+                            300,
+                            300,
+                            'Versus',
+                            70,
+                            'Comic Sans MS',
+                            (255, 255, 255)
+                            )
+        self.add_room_object(versus)
+
+        blue_team = TextObject(self,
+                               200,
+                               400,
+                               'Blue : {}'.format(Globals.game_list[Globals.current_battle][1]),
+                               70,
+                               'Comic Sans MS',
+                               (0, 0, 255)
+                               )
+        self.add_room_object(blue_team)
 
         self.load_new_bots()
 
-        self.set_timer(120, self.run_battle)
+        self.set_timer(200, self.run_battle)
 
     def load_new_bots(self):
         index = Globals.current_battle
@@ -26,11 +56,14 @@ class Battle(Level):
             destination_path = os.path.join('Battles', 'Objects', 'Red{}.py'.format(i))
             shutil.copy(source_path, destination_path)
 
-        Globals.current_battle += 1
-
     def run_battle(self):
         # Move to the Game Directory #
+        self.background_sound.stop()
         os.chdir('Battles')
-        subprocess.run(['python3', 'MainController.py'])
+        subprocess.run(['python3', 'MainController.py',
+                        Globals.game_list[Globals.current_battle][0],
+                        Globals.game_list[Globals.current_battle][1]
+                        ])
         os.chdir('..')
+        Globals.current_battle += 1
         self.running = False

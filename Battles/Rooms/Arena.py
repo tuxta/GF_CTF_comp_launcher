@@ -32,3 +32,7 @@ class Arena(Level):
         for i in range(len(Globals.blue_bots)):
             self.add_room_object(Globals.blue_bots[i])
             Globals.blue_bots[i].rotate(180)
+
+        Globals.background_music = self.load_sound('battle-music.ogg')
+        Globals.background_music.play(-1)
+

@@ -17,6 +17,12 @@ screen = pygame.display.set_mode(window_size,
 Globals.next_level = Globals.start_level
 levels = Globals.levels
 
+Globals.red_player = sys.argv[1]
+Globals.blue_player = sys.argv[2]
+
+print(Globals.blue_player)
+print(Globals.red_player)
+
 # - Main Game Loop. Steps through the levels defined in levels[] - #
 while Globals.running:
 
