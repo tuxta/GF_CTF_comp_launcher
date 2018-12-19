@@ -1,4 +1,5 @@
 import os
+import pygame
 import shutil
 import subprocess
 from GameFrame import Level, TextObject, Globals
@@ -12,8 +13,8 @@ class Battle(Level):
         self.background_sound.play()
 
         red_team = TextObject(self,
-                              200,
-                              200,
+                              Globals.SCREEN_WIDTH / 4,
+                              Globals.SCREEN_HEIGHT / 4,
                               'Red : {}'.format(Globals.game_list[Globals.current_battle][0]),
                               70,
                               'Comic Sans MS',
@@ -22,8 +23,8 @@ class Battle(Level):
         self.add_room_object(red_team)
 
         versus = TextObject(self,
-                            300,
-                            300,
+                            Globals.SCREEN_WIDTH / 3,
+                            Globals.SCREEN_HEIGHT / 2,
                             'Versus',
                             70,
                             'Comic Sans MS',
@@ -32,8 +33,8 @@ class Battle(Level):
         self.add_room_object(versus)
 
         blue_team = TextObject(self,
-                               200,
-                               400,
+                               Globals.SCREEN_WIDTH / 4,
+                               Globals.SCREEN_HEIGHT / 4 * 3,
                                'Blue : {}'.format(Globals.game_list[Globals.current_battle][1]),
                                70,
                                'Comic Sans MS',
@@ -60,10 +61,12 @@ class Battle(Level):
         # Move to the Game Directory #
         self.background_sound.stop()
         os.chdir('Battles')
+        pygame.display.toggle_fullscreen()
         subprocess.run(['python3', 'MainController.py',
                         Globals.game_list[Globals.current_battle][0],
                         Globals.game_list[Globals.current_battle][1]
                         ])
         os.chdir('..')
+        pygame.display.toggle_fullscreen()
         Globals.current_battle += 1
         self.running = False

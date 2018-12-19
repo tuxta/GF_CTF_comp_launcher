@@ -76,7 +76,7 @@ class Level:
                     if self.background_y >= Globals.SCREEN_HEIGHT:
                         self.background_y = 0
                     self.screen.blit(self.background_image, (0, self.background_y))
-                    self.screen.blit(self.background_image, (0, self.background_y - 600))
+                    self.screen.blit(self.background_image, (0, self.background_y - Globals.SCREEN_HEIGHT))
                 else:
                     self.screen.blit(self.background_image, (0, 0))
 
@@ -99,6 +99,7 @@ class Level:
     def set_background_image(self, image_file):
         self.background_set = True
         self.background_image = pygame.image.load(os.path.join('Images', image_file)).convert_alpha()
+        self.background_image = pygame.transform.scale(self.background_image, (Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT))
 
     def set_background_scroll(self, speed):
         self.background_scrolling = True

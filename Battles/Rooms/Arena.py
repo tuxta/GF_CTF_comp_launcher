@@ -9,22 +9,22 @@ class Arena(Level):
 
         self.set_background_image("background.png")
 
-        Globals.red_flag = RedFlag(self, 50, 274)
-        Globals.blue_flag = BlueFlag(self, 718, 274)
+        Globals.red_flag = RedFlag(self, 50, Globals.SCREEN_HEIGHT / 2 - 26)
+        Globals.blue_flag = BlueFlag(self, Globals.SCREEN_WIDTH - 82, Globals.SCREEN_HEIGHT / 2 - 26)
 
         self.add_room_object(Globals.red_flag)
         self.add_room_object(Globals.blue_flag)
 
-        Globals.red_bots.append(Red1(self, 550, 92))
-        Globals.blue_bots.append(Blue1(self, 108, 192))
-        Globals.red_bots.append(Red2(self, 550, 282))
-        Globals.blue_bots.append(Blue2(self, 108, 392))
-        Globals.red_bots.append(Red3(self, 550, 492))
-        Globals.blue_bots.append(Blue3(self, 228, 92))
-        Globals.red_bots.append(Red4(self, 660, 192))
-        Globals.blue_bots.append(Blue4(self, 228, 282))
-        Globals.red_bots.append(Red5(self, 660, 392))
-        Globals.blue_bots.append(Blue5(self, 228, 492))
+        Globals.red_bots.append(Red1(self, Globals.SCREEN_WIDTH - 250, Globals.SCREEN_HEIGHT / 4))
+        Globals.blue_bots.append(Blue1(self, 108, Globals.SCREEN_HEIGHT / 3))
+        Globals.red_bots.append(Red2(self, Globals.SCREEN_WIDTH - 250, Globals.SCREEN_HEIGHT / 4 * 2))
+        Globals.blue_bots.append(Blue2(self, 108, Globals.SCREEN_HEIGHT / 3 * 2))
+        Globals.red_bots.append(Red3(self, Globals.SCREEN_WIDTH - 250, Globals.SCREEN_HEIGHT / 4 * 3))
+        Globals.blue_bots.append(Blue3(self, 228, Globals.SCREEN_HEIGHT / 4))
+        Globals.red_bots.append(Red4(self, Globals.SCREEN_WIDTH - 140, Globals.SCREEN_HEIGHT / 3))
+        Globals.blue_bots.append(Blue4(self, 228, Globals.SCREEN_HEIGHT / 4 * 2))
+        Globals.red_bots.append(Red5(self, Globals.SCREEN_WIDTH - 140, Globals.SCREEN_HEIGHT / 3 * 2))
+        Globals.blue_bots.append(Blue5(self, 228, Globals.SCREEN_HEIGHT / 4 * 3))
 
         for i in range(len(Globals.red_bots)):
             self.add_room_object(Globals.red_bots[i])
