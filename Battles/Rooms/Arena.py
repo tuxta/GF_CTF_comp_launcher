@@ -36,3 +36,8 @@ class Arena(Level):
         Globals.background_music = self.load_sound('battle-music.ogg')
         Globals.background_music.play(-1)
 
+        self.set_timer(3600, self.timed_out)
+
+    def timed_out(self):
+        Globals.winner = "Draw"
+        self.running = False
