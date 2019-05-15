@@ -1,4 +1,4 @@
-from GameFrame import Level, Globals, RedFlag, BlueFlag
+from GameFrame import Level, Globals, RedFlag, BlueFlag, TextObject
 from Objects import Red1, Red2, Red3, Red4, Red5
 from Objects import Blue1, Blue2, Blue3, Blue4, Blue5
 
@@ -36,8 +36,28 @@ class Arena(Level):
         Globals.background_music = self.load_sound('battle-music.ogg')
         Globals.background_music.play(-1)
 
+        self.counter = 3600
+        self.seconds = 120
+        self.counter_text = TextObject(self, Globals.SCREEN_WIDTH/2 - 50, 10, str(self.seconds))
+        self.add_room_object(self.counter_text)
+        self.counter_text.x = Globals.SCREEN_WIDTH / 2 - self.counter_text.width/2
+
         self.set_timer(3600, self.timed_out)
 
+    def tick(self):
+        self.counter -= 1
+        if self.counter % 30 == 0:
+            self.seconds -= 1
+            self.counter_text.text = str(self.seconds)
+            self.counter_text.update_text()
+            self.counter_text.x = Globals.SCREEN_WIDTH / 2 - self.counter_text.width / 2
+
     def timed_out(self):
-        Globals.winner = "Draw"
+        if Globals.red_enemy_side_time > Globals.blue_enemy_side_time:
+            Globals.winner = 'Red'
+        elif Globals.blue_enemy_side_time > Globals.red_enemy_side_time:
+            Globals.winner = 'Blue'
+        else:
+            Globals.winner = 'Draw'
         self.running = False
+

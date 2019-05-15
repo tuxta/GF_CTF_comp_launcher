@@ -15,7 +15,7 @@ class Battle(Level):
         red_team = TextObject(self,
                               Globals.SCREEN_WIDTH / 4,
                               Globals.SCREEN_HEIGHT / 4,
-                              'Red : {}'.format(Globals.game_list[Globals.current_battle][0]),
+                              'Red : {}'.format(Globals.game_list[Globals.current_battle][1]),
                               70,
                               'Comic Sans MS',
                               (255, 0, 0)
@@ -35,7 +35,7 @@ class Battle(Level):
         blue_team = TextObject(self,
                                Globals.SCREEN_WIDTH / 4,
                                Globals.SCREEN_HEIGHT / 4 * 3,
-                               'Blue : {}'.format(Globals.game_list[Globals.current_battle][1]),
+                               'Blue : {}'.format(Globals.game_list[Globals.current_battle][0]),
                                70,
                                'Comic Sans MS',
                                (0, 0, 255)
