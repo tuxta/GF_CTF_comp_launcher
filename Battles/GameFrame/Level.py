@@ -28,6 +28,8 @@ class Level:
         while self.running:
             self._clock.tick(Globals.FRAMES_PER_SECOND)
 
+            self.tick()
+
             for obj in self.objects:
                 obj.prev_x = obj.x
                 obj.prev_y = obj.y
@@ -174,3 +176,6 @@ class Level:
             if user_event[0] <= 0:
                 user_event[1]()
                 self.user_events.pop(index)
+
+    def tick(self):
+        pass

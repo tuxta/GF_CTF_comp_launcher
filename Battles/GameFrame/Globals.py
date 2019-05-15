@@ -52,3 +52,8 @@ class Globals:
     # Direction
     LEFT = 0
     RIGHT = 1
+
+    # Time in opposition half
+    red_enemy_side_time = 0
+    blue_enemy_side_time = 0
+
