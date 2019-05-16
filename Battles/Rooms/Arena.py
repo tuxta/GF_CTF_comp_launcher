@@ -42,6 +42,14 @@ class Arena(Level):
         self.add_room_object(self.counter_text)
         self.counter_text.x = Globals.SCREEN_WIDTH / 2 - self.counter_text.width/2
 
+        self.blue_score_text = TextObject(self, Globals.SCREEN_WIDTH / 2 - 50, 10, str(Globals.blue_enemy_side_time), 30)
+        self.add_room_object(self.blue_score_text)
+        self.blue_score_text.x = Globals.SCREEN_WIDTH / 3 - self.counter_text.width / 2
+
+        self.red_score_text = TextObject(self, Globals.SCREEN_WIDTH / 2 - 50, 10, str(Globals.red_enemy_side_time), 30)
+        self.add_room_object(self.red_score_text)
+        self.red_score_text.x = Globals.SCREEN_WIDTH / 3 * 2 - self.counter_text.width / 2
+
         self.set_timer(3600, self.timed_out)
 
     def tick(self):
@@ -51,6 +59,12 @@ class Arena(Level):
             self.counter_text.text = str(self.seconds)
             self.counter_text.update_text()
             self.counter_text.x = Globals.SCREEN_WIDTH / 2 - self.counter_text.width / 2
+
+            self.blue_score_text.text = str(Globals.blue_enemy_side_time)
+            self.blue_score_text.update_text()
+
+            self.red_score_text.text = str(Globals.red_enemy_side_time)
+            self.red_score_text.update_text()
 
     def timed_out(self):
         if Globals.red_enemy_side_time > Globals.blue_enemy_side_time:
