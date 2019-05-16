@@ -48,6 +48,9 @@ class BlueBot(Bot):
             else:
                 self.has_flag = False
 
+        if self.x > Globals.SCREEN_WIDTH / 2:
+            Globals.blue_enemy_side_time += 1
+
         self.tick()
 
     def tick(self):
