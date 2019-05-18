@@ -50,6 +50,8 @@ class RedBot(Bot):
 
         if self.x < Globals.SCREEN_WIDTH / 2:
             Globals.red_enemy_side_time += 1
+            if self.has_flag:
+                Globals.red_enemy_side_time += 10
             
 
         try:

@@ -50,6 +50,8 @@ class BlueBot(Bot):
 
         if self.x > Globals.SCREEN_WIDTH / 2:
             Globals.blue_enemy_side_time += 1
+            if self.has_flag:
+                Globals.blue_enemy_side_time += 10
 
         try:
             self.tick()

@@ -38,7 +38,9 @@ class Arena(Level):
 
         self.counter = 3600
         self.seconds = 120
-        self.counter_text = TextObject(self, Globals.SCREEN_WIDTH/2 - 50, 10, str(self.seconds))
+        text_minutes = int(self.seconds / 60)
+        text_seconds = self.seconds % 60
+        self.counter_text = TextObject(self, Globals.SCREEN_WIDTH/2 - 50, 10, "{}:{:02d}".format(text_minutes, text_seconds))
         self.add_room_object(self.counter_text)
         self.counter_text.x = Globals.SCREEN_WIDTH / 2 - self.counter_text.width/2
 
@@ -56,7 +58,9 @@ class Arena(Level):
         self.counter -= 1
         if self.counter % 30 == 0:
             self.seconds -= 1
-            self.counter_text.text = str(self.seconds)
+            text_minutes = int(self.seconds / 60)
+            text_seconds = self.seconds % 60
+            self.counter_text.text = "{}:{:02d}".format(text_minutes, text_seconds)
             self.counter_text.update_text()
             self.counter_text.x = Globals.SCREEN_WIDTH / 2 - self.counter_text.width / 2
 
