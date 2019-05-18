@@ -52,7 +52,10 @@ class RedBot(Bot):
             Globals.red_enemy_side_time += 1
             
 
-        self.tick()
+        try:
+            self.tick()
+        except Exception:
+            print("Red Exception occured\n")
 
     def tick(self):
         pass

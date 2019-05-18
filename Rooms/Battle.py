@@ -20,6 +20,7 @@ class Battle(Level):
                               'Comic Sans MS',
                               (255, 0, 0)
                               )
+        red_team.x = Globals.SCREEN_WIDTH / 2 - red_team.width / 2
         self.add_room_object(red_team)
 
         versus = TextObject(self,
@@ -30,6 +31,7 @@ class Battle(Level):
                             'Comic Sans MS',
                             (255, 255, 255)
                             )
+        versus.x = Globals.SCREEN_WIDTH / 2 - versus.width / 2
         self.add_room_object(versus)
 
         blue_team = TextObject(self,
@@ -40,6 +42,7 @@ class Battle(Level):
                                'Comic Sans MS',
                                (0, 0, 255)
                                )
+        blue_team.x = Globals.SCREEN_WIDTH / 2 - blue_team.width / 2
         self.add_room_object(blue_team)
 
         self.load_new_bots()

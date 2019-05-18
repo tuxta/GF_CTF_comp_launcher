@@ -51,7 +51,10 @@ class BlueBot(Bot):
         if self.x > Globals.SCREEN_WIDTH / 2:
             Globals.blue_enemy_side_time += 1
 
-        self.tick()
+        try:
+            self.tick()
+        except Exception:
+            print("Blue Exception occured\n")
 
     def tick(self):
         pass

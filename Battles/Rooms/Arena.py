@@ -9,8 +9,8 @@ class Arena(Level):
 
         self.set_background_image("background.png")
 
-        Globals.red_flag = RedFlag(self, 50, Globals.SCREEN_HEIGHT / 2 - 26)
-        Globals.blue_flag = BlueFlag(self, Globals.SCREEN_WIDTH - 82, Globals.SCREEN_HEIGHT / 2 - 26)
+        Globals.red_flag = RedFlag(self, 200, Globals.SCREEN_HEIGHT / 2 - 26)
+        Globals.blue_flag = BlueFlag(self, Globals.SCREEN_WIDTH - 232, Globals.SCREEN_HEIGHT / 2 - 26)
 
         self.add_room_object(Globals.red_flag)
         self.add_room_object(Globals.blue_flag)
