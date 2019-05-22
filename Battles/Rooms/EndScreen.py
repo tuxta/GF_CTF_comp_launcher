@@ -17,11 +17,13 @@ class EndScreen(Level):
         winner_text = TextObject(self, Globals.SCREEN_WIDTH / 3, Globals.SCREEN_HEIGHT / 3 * 2, winner, 80)
         winner_text.colour = colour
         winner_text.update_text()
+        winner_text.x = Globals.SCREEN_WIDTH / 2 - winner_text.width / 2
         self.add_room_object(winner_text)
 
         battle_text = TextObject(self, Globals.SCREEN_WIDTH / 3, Globals.SCREEN_HEIGHT / 3, 'Battle Winner', 80)
         battle_text.colour = colour
         battle_text.update_text()
+        battle_text.x = Globals.SCREEN_WIDTH / 2 - battle_text.width / 2
         self.add_room_object(battle_text)
 
         Globals.background_music.stop()
