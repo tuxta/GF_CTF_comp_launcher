@@ -73,3 +73,4 @@ class Battle(Level):
         pygame.display.toggle_fullscreen()
         Globals.current_battle += 1
         self.running = False
+        self.quitting = True
