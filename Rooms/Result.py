@@ -8,7 +8,7 @@ class Result(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
 
-        title = TextObject(self, Globals.SCREEN_WIDTH / 3, Globals.SCREEN_HEIGHT / 3, 'Results', 80, 'Comic Sans MS',
+        title = TextObject(self, Globals.SCREEN_WIDTH / 3, Globals.SCREEN_HEIGHT / 3, 'Results', 60, 'Comic Sans MS',
                            (255, 255, 255)
                            )
         title.x = Globals.SCREEN_WIDTH / 2 - title.width / 2
@@ -24,6 +24,12 @@ class Result(Level):
         self.add_room_object(griff_logo)
 
         self.set_timer(120, self.show_winner)
+        self.set_timer(240, self.end_it)
+
+    def end_it(self):
+        self.running = False
+        self.quitting = True
+        Globals.running = False
 
     def show_winner(self):
         file_name = os.path.join('Battles', 'results.txt')
@@ -33,12 +39,12 @@ class Result(Level):
 
         ordered_results = list(Counter(results_from_file).most_common())
 
-        y_pos = 300
+        y_pos = 320
         for team in ordered_results:
-            team_result = TextObject(self, Globals.SCREEN_WIDTH / 3, y_pos, team[0], 50,
+            team_result = TextObject(self, Globals.SCREEN_WIDTH / 3, y_pos, '{}    {}'.format(team[0], team[1]), 80,
                                      'Comic Sans MS',
                                      (255, 255, 255)
                                      )
             team_result.x = Globals.SCREEN_WIDTH / 2 - team_result.width / 2
             self.add_room_object(team_result)
-            y_pos += 50
+            y_pos += 80

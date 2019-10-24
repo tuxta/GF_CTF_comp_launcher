@@ -42,9 +42,9 @@ class EndScreen(Level):
         # Append the result to the file 'results.txt'
         log_file = open('results.txt', 'a')
         if Globals.winner == 'Red':
-            log_file.write(Globals.red_player)
+            log_file.write(Globals.red_player + '\n')
         else:
-            log_file.write(Globals.blue_player)
+            log_file.write(Globals.blue_player + '\n')
         
         self.running = False
         self.quitting = True
