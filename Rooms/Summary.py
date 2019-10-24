@@ -1,5 +1,5 @@
 from GameFrame import Level, TextObject, Globals
-from Objects import IBMLogo, GriffLogo
+from Objects import IBMLogo, GriffLogo, VarsityLogo
 
 
 class Summary(Level):
@@ -16,10 +16,13 @@ class Summary(Level):
 
         self.set_timer(150, self.start_battle)
 
-        ibm_logo = IBMLogo(self, Globals.SCREEN_WIDTH / 2 + 100, 0)
+        ibm_logo = IBMLogo(self, Globals.SCREEN_WIDTH / 2 + 220, 0)
         self.add_room_object(ibm_logo)
 
-        griff_logo = GriffLogo(self, Globals.SCREEN_WIDTH / 2 - 400, 0)
+        varsity_logo = VarsityLogo(self, Globals.SCREEN_WIDTH / 2 - 130, 0)
+        self.add_room_object(varsity_logo)
+
+        griff_logo = GriffLogo(self, Globals.SCREEN_WIDTH / 2 - 580, 0)
         self.add_room_object(griff_logo)
 
     def start_battle(self):
