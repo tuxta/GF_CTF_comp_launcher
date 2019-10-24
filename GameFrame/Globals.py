@@ -16,7 +16,7 @@ class Globals:
     window_name = 'GF Game'
 
     # - Set the order of the rooms - #
-    levels = ["Summary", "Battle"]
+    levels = ["Summary", "Battle", "Result"]
 
     # - Set the starting level - #
     start_level = 0

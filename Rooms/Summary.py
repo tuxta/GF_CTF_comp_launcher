@@ -29,6 +29,5 @@ class Summary(Level):
         if Globals.current_battle < len(Globals.game_list):
             self.running = False
         else:
+            Globals.next_level = 2
             self.running = False
-            self.quitting = True
-            Globals.exiting = True
