@@ -1,5 +1,5 @@
-from GameFrame import Level, TextObject, Globals
-from Objects import IBMLogo, GriffLogo, VarsityLogo
+from GameFrame import Level, Globals, TextObject
+from Objects import IBMLogo, GriffLogo, VarsityLogo, ResultsText
 from collections import Counter
 import os
 
@@ -8,9 +8,9 @@ class Result(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
 
-        title = TextObject(self, Globals.SCREEN_WIDTH / 3, Globals.SCREEN_HEIGHT / 3, 'Results', 60, 'Comic Sans MS',
-                           (255, 255, 255)
-                           )
+        title = ResultsText(self, Globals.SCREEN_WIDTH / 3, Globals.SCREEN_HEIGHT / 3, 'Results', 60, 'Comic Sans MS',
+                            (255, 255, 255)
+                            )
         title.x = Globals.SCREEN_WIDTH / 2 - title.width / 2
         self.add_room_object(title)
 
@@ -22,9 +22,6 @@ class Result(Level):
 
         griff_logo = GriffLogo(self, Globals.SCREEN_WIDTH / 2 - 580, 0)
         self.add_room_object(griff_logo)
-
-        self.set_timer(120, self.show_winner)
-        self.set_timer(240, self.end_it)
 
     def end_it(self):
         self.running = False
