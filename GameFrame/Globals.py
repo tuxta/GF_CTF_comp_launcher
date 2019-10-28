@@ -31,6 +31,8 @@ class Globals:
     # - Change variable to True to exit the program - #
     exiting = False
 
+    first_run = True
+
     # List of competitors
     players_list = []
 

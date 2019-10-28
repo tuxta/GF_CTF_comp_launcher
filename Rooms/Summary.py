@@ -1,12 +1,12 @@
 from GameFrame import Level, TextObject, Globals
-from Objects import IBMLogo, GriffLogo, VarsityLogo
+from Objects import IBMLogo, GriffLogo, VarsityLogo, VarsityText
 
 
 class Summary(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
 
-        title = TextObject(self, Globals.SCREEN_WIDTH / 3, Globals.SCREEN_HEIGHT / 3, 'Varsity College - 2019 Finals', 80, 'Comic Sans MS', (255, 255, 255))
+        title = VarsityText(self, Globals.SCREEN_WIDTH / 3, Globals.SCREEN_HEIGHT / 3, 'Varsity College - 2019 Finals', 80, 'Comic Sans MS', (255, 255, 255))
         title.x = Globals.SCREEN_WIDTH / 2 - title.width / 2
         self.add_room_object(title)
 
@@ -14,7 +14,8 @@ class Summary(Level):
         ctf_text.x = Globals.SCREEN_WIDTH / 2 - ctf_text.width / 2
         self.add_room_object(ctf_text)
 
-        self.set_timer(150, self.start_battle)
+        if not Globals.first_run:
+            self.set_timer(60, self.start_battle)
 
         ibm_logo = IBMLogo(self, Globals.SCREEN_WIDTH / 2 + 220, 0)
         self.add_room_object(ibm_logo)
