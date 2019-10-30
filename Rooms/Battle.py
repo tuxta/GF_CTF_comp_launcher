@@ -3,6 +3,7 @@ import pygame
 import shutil
 import subprocess
 from GameFrame import Level, TextObject, Globals
+from Objects import IBMLogo, VarsityLogo, GriffLogo
 
 
 class Battle(Level):
@@ -11,6 +12,15 @@ class Battle(Level):
 
         self.background_sound = self.load_sound('dramatic_event.ogg')
         self.background_sound.play()
+
+        ibm_logo = IBMLogo(self, Globals.SCREEN_WIDTH / 2 + 220, 0)
+        self.add_room_object(ibm_logo)
+
+        varsity_logo = VarsityLogo(self, Globals.SCREEN_WIDTH / 2 - 130, 0)
+        self.add_room_object(varsity_logo)
+
+        griff_logo = GriffLogo(self, Globals.SCREEN_WIDTH / 2 - 580, 0)
+        self.add_room_object(griff_logo)
 
         red_team = TextObject(self,
                               Globals.SCREEN_WIDTH / 4,
@@ -65,7 +75,7 @@ class Battle(Level):
         self.background_sound.stop()
         os.chdir('Battles')
         pygame.display.toggle_fullscreen()
-        subprocess.run(['python3', 'MainController.py',
+        subprocess.run(['py', 'MainController.py',
                         Globals.game_list[Globals.current_battle][0],
                         Globals.game_list[Globals.current_battle][1]
                         ])

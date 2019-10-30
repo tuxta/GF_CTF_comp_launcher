@@ -15,7 +15,7 @@ class Summary(Level):
         self.add_room_object(ctf_text)
 
         if not Globals.first_run:
-            self.set_timer(60, self.start_battle)
+            self.set_timer(30, self.start_battle)
 
         ibm_logo = IBMLogo(self, Globals.SCREEN_WIDTH / 2 + 220, 0)
         self.add_room_object(ibm_logo)
