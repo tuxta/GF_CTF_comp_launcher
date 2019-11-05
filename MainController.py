@@ -24,6 +24,10 @@ window_size = (Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT)
 screen = pygame.display.set_mode(window_size,
                                  pygame.FULLSCREEN)
 
+# Clear the results file
+results_file = os.path.join('Battles', 'results.txt')
+open(results_file, "w").close()
+
 Globals.next_level = Globals.start_level
 levels = Globals.levels
 
