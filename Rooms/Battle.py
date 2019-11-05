@@ -1,6 +1,7 @@
 import os
 import pygame
 import shutil
+import platform
 import subprocess
 from GameFrame import Level, TextObject, Globals
 from Objects import IBMLogo, VarsityLogo, GriffLogo
@@ -75,10 +76,16 @@ class Battle(Level):
         self.background_sound.stop()
         os.chdir('Battles')
         pygame.display.toggle_fullscreen()
-        subprocess.run(['py', 'MainController.py',
-                        Globals.game_list[Globals.current_battle][0],
-                        Globals.game_list[Globals.current_battle][1]
-                        ])
+        if platform.system() == "Windows":
+            subprocess.run(['py', 'MainController.py',
+                            Globals.game_list[Globals.current_battle][0],
+                            Globals.game_list[Globals.current_battle][1]
+                            ])
+        else:
+            subprocess.run(['python3', 'MainController.py',
+                            Globals.game_list[Globals.current_battle][0],
+                            Globals.game_list[Globals.current_battle][1]
+                            ])
         os.chdir('..')
         pygame.display.toggle_fullscreen()
         Globals.current_battle += 1
