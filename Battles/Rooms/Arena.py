@@ -52,11 +52,13 @@ class Arena(Level):
         self.add_room_object(self.red_score_text)
         self.red_score_text.x = Globals.SCREEN_WIDTH / 3 * 2 - self.counter_text.width / 2
 
-        self.set_timer(3600, self.timed_out)
+        # self.set_timer(3600, self.timed_out)
 
     def tick(self):
         self.counter -= 1
-        if self.counter % 30 == 0:
+        if self.counter <= 0:
+            self.timed_out()
+        elif self.counter % 30 == 0:
             self.seconds -= 1
             text_minutes = int(self.seconds / 60)
             text_seconds = self.seconds % 60
