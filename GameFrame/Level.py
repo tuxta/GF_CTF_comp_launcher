@@ -78,6 +78,12 @@ class Level:
             # - Check for a keyboard event and pass - #
             # - to objects registered for key events - #
             keys = pygame.key.get_pressed()
+            if keys[pygame.K_ESCAPE] and keys[pygame.K_LSHIFT]:
+                self.running = False
+                self.quitting = True
+                Globals.running = False
+            if keys[pygame.K_ESCAPE]:
+                self.running = False
             if len(keys):
                 for obj in self.keyboard_objects:
                     obj.key_pressed(keys)

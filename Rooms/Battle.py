@@ -4,7 +4,7 @@ import shutil
 import platform
 import subprocess
 from GameFrame import Level, TextObject, Globals
-from Objects import IBMLogo, VarsityLogo, GriffLogo
+from Objects import IBMLogo, VarsityLogo, GriffLogo, SomaLogo, LittlePhilLogo
 
 
 class Battle(Level):
@@ -23,6 +23,16 @@ class Battle(Level):
         griff_logo = GriffLogo(self, Globals.SCREEN_WIDTH / 2 - 580, 0)
         self.add_room_object(griff_logo)
 
+        soma_logo = SomaLogo(self, 80, Globals.SCREEN_HEIGHT - 140)
+        self.add_room_object(soma_logo)
+
+        little_phil_logo = LittlePhilLogo(
+            self,
+            Globals.SCREEN_WIDTH - 500,
+            Globals.SCREEN_HEIGHT - 160
+        )
+        self.add_room_object(little_phil_logo)
+
         red_team = TextObject(self,
                               Globals.SCREEN_WIDTH / 4,
                               Globals.SCREEN_HEIGHT / 4,
@@ -36,7 +46,7 @@ class Battle(Level):
 
         versus = TextObject(self,
                             Globals.SCREEN_WIDTH / 3,
-                            Globals.SCREEN_HEIGHT / 2,
+                            Globals.SCREEN_HEIGHT / 2 - 70,
                             'Versus',
                             70,
                             'Comic Sans MS',
@@ -47,7 +57,7 @@ class Battle(Level):
 
         blue_team = TextObject(self,
                                Globals.SCREEN_WIDTH / 4,
-                               Globals.SCREEN_HEIGHT / 4 * 3,
+                               Globals.SCREEN_HEIGHT / 4 * 3 - 140,
                                'Blue : {}'.format(Globals.game_list[Globals.current_battle][0]),
                                70,
                                'Comic Sans MS',

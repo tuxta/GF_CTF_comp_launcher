@@ -1,5 +1,5 @@
 from GameFrame import Level, Globals, TextObject
-from Objects import IBMLogo, GriffLogo, VarsityLogo, ResultsText
+from Objects import IBMLogo, GriffLogo, VarsityLogo, ResultsText, SomaLogo, LittlePhilLogo
 from collections import Counter
 import os
 
@@ -22,6 +22,16 @@ class Result(Level):
 
         griff_logo = GriffLogo(self, Globals.SCREEN_WIDTH / 2 - 580, 0)
         self.add_room_object(griff_logo)
+
+        soma_logo = SomaLogo(self, 80, Globals.SCREEN_HEIGHT - 140)
+        self.add_room_object(soma_logo)
+
+        little_phil_logo = LittlePhilLogo(
+            self,
+            Globals.SCREEN_WIDTH - 500,
+            Globals.SCREEN_HEIGHT - 160
+        )
+        self.add_room_object(little_phil_logo)
 
     def end_it(self):
         self.running = False

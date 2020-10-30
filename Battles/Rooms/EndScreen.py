@@ -28,7 +28,7 @@ class EndScreen(Level):
 
         Globals.background_music.stop()
 
-        break_sound = self.load_sound('rock_breaking.flac')
+        break_sound = self.load_sound('rock_breaking.ogg')
         self.applause = self.load_sound('applause.wav')
         break_sound.play()
         self.set_timer(60, self.applaud)
